@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ItemDetails from '../ItemDetails/ItemDetails';
 
-const InventoryItems = () => {
+const Items = () => {
     const [items, setItems] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/item')
@@ -9,7 +9,7 @@ const InventoryItems = () => {
             .then(data => setItems(data));
     }, [])
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 px-6'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
             {
                 items.map(item => <ItemDetails
                     key={item._id}
@@ -20,4 +20,4 @@ const InventoryItems = () => {
     );
 };
 
-export default InventoryItems;
+export default Items;

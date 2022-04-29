@@ -11,6 +11,7 @@ function App() {
   return (
     <div className='bg-black bg-opacity-90 h-full'>
       <Header />
+      <div className='px-4 md:px-8'>
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
@@ -20,6 +21,7 @@ function App() {
         {/* <Route path='/home' element={<Home/>}></Route>
         <Route path='/home' element={<Home/>}></Route> */}
       </Routes>
+      </div>
       <Footer />
     </div>
   );

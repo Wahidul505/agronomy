@@ -18,9 +18,12 @@ const Header = () => {
         else if (pathname === '/login') {
             setHeader('Login')
         }
+        else if(pathname.includes('inventory/')){
+            setHeader('Inventory')
+        }
     },[pathname])
     return (
-        <div className='nav-bar'>
+        <div className='nav-bar mb-24'>
             <div className='flex flex-col md:flex-row justify-between p-4 md:px-12 gap-2 text-white'>
                 <h1 className='text-3xl'>Agronomy</h1>
                 <nav className={`flex gap-1 md:gap-6 text-xl md:flex md:flex-row ${show ? 'flex-col' : 'hidden'}`}>
@@ -34,7 +37,7 @@ const Header = () => {
             </div>
             <div className='h-40 md:h-60 lg:h-72 flex items-center font-semibold'>
                 <div className='px-4 md:px-12'>
-                <p className='text-green-300 text-xl'> / /  Welcome to Our Warehouse</p>
+                <p className='text-green-300 text-xl'> / /  Welcome to Agronomy Warehouse</p>
                 <h1 className='text-white text-3xl'>{header}</h1>
                 </div>
             </div>

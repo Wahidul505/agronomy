@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
     return (
@@ -13,6 +14,7 @@ const Login = () => {
             </form>
             <Link to='/register' className='underline text-yellow-200 md:text-lg px-3 hover:text-green-300'>Create an Account</Link>
             <p className='text-right text-yellow-200 md:text-lg px-3 hover:text-green-300'><button>Forgot Password?</button></p>
+            <SocialLogin />
         </div>
     );
 };

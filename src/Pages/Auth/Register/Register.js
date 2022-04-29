@@ -8,7 +8,9 @@ const Register = () => {
                 <h1>Register</h1>
                 <p></p>
             </div>
-            <form></form>
+            <form>
+                
+            </form>
         </div>
     );
 };

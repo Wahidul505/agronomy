@@ -8,7 +8,7 @@ import Header from './Pages/Shared/Header/Header';
 
 function App() {
   return (
-    <div className='bg-black bg-opacity-70 h-screen'>
+    <div className='bg-black bg-opacity-90 h-full'>
       <Header/>
       <Routes>
         <Route path='/' element={<Home/>}></Route>

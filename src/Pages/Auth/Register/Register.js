@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
@@ -7,6 +7,9 @@ import auth from '../../../firebase.init';
 import toast from 'react-hot-toast';
 
 const Register = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const nameRef = useRef('');
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -26,7 +29,7 @@ const Register = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         const confirmPassword = confirmPasswordRef.current.value;
-        if(password !== confirmPassword){
+        if (password !== confirmPassword) {
             setPasswordError("Password didn't matched");
             return;
         }
@@ -34,20 +37,23 @@ const Register = () => {
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
     };
-    useEffect(()=>{
-        if(registerError || updateError){
-            toast.error('Something Went Wrong', {id:'registerError'})
+    useEffect(() => {
+        if (registerError || updateError) {
+            toast.error('Something Went Wrong', { id: 'registerError' })
         }
-    },[registerError, updateError])
+        else if (user) {
+            navigate(from, { replace: true });
+        }
+    }, [registerError, updateError, from, navigate, user]);
     return (
         <div className='w-5/6 md:w-1/2 mx-auto'>
             <h1 className='text-center text-2xl md:text-3xl text-green-700'>Create An Account</h1>
             <hr className='w-2/3 mx-auto' />
             <form onSubmit={handleRegister} className='flex flex-col mt-12 px-3 gap-4'>
-                <input ref={nameRef} className='px-1 bg-transparent border-b-2 border-green-700 text-xl text-white focus:outline-none' type="text" name='name' id='name' placeholder='Enter Your Name' required/>
-                <input ref={emailRef} className='px-1 bg-transparent border-b-2 border-green-700 text-xl text-white focus:outline-none' type="email" name='email' id='email' placeholder='Your Email Address' required/>
-                <input ref={passwordRef} className='px-1 bg-transparent border-b-2 border-green-700 text-xl text-white focus:outline-none' type="password" name='password' id='password' placeholder='Enter a Password' required/>
-                <input ref={confirmPasswordRef} className='px-1 bg-transparent border-b-2 border-green-700 text-xl text-white focus:outline-none' type="password" name='confirm_password' id='confirm_password' placeholder='Confirm Password' required/>
+                <input ref={nameRef} className='px-1 bg-transparent border-b-2 border-green-700 text-xl text-white focus:outline-none' type="text" name='name' id='name' placeholder='Enter Your Name' required />
+                <input ref={emailRef} className='px-1 bg-transparent border-b-2 border-green-700 text-xl text-white focus:outline-none' type="email" name='email' id='email' placeholder='Your Email Address' required />
+                <input ref={passwordRef} className='px-1 bg-transparent border-b-2 border-green-700 text-xl text-white focus:outline-none' type="password" name='password' id='password' placeholder='Enter a Password' required />
+                <input ref={confirmPasswordRef} className='px-1 bg-transparent border-b-2 border-green-700 text-xl text-white focus:outline-none' type="password" name='confirm_password' id='confirm_password' placeholder='Confirm Password' required />
                 {
                     passwordError && <p className='text-red-400'>{passwordError}</p>
                 }

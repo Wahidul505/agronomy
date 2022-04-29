@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './Pages/Auth/Login/Login';
 import Register from './Pages/Auth/Register/Register';
+import RequiredAuth from './Pages/Auth/RequiredAuth/RequiredAuth';
 import Home from './Pages/Home/Home/Home';
 import Inventory from './Pages/Inventory/Inventory';
 import Footer from './Pages/Shared/Footer/Footer';
@@ -22,7 +23,9 @@ function App() {
           <Route path='/home' element={<Home />}></Route>
           <Route path='/register' element={<Register />}></Route>
           <Route path='/login' element={<Login />}></Route>
-          <Route path='/inventory/:id' element={<Inventory />}></Route>
+          <Route path='/inventory/:id' element={<RequiredAuth>
+            <Inventory />
+          </RequiredAuth>}></Route>
           {/* <Route path='/home' element={<Home/>}></Route>
         <Route path='/home' element={<Home/>}></Route> */}
         </Routes>

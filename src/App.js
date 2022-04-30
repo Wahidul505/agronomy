@@ -8,6 +8,7 @@ import RequiredAuth from './Pages/Auth/RequiredAuth/RequiredAuth';
 import Home from './Pages/Home/Home/Home';
 import Inventory from './Pages/Inventory/Inventory';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
+import MyItems from './Pages/MyItems/MyItems';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 
@@ -34,8 +35,9 @@ function App() {
           <Route path='/addInventory' element={<RequiredAuth>
             <AddInventory />
           </RequiredAuth>}></Route>
-          {/* <Route path='/home' element={<Home/>}></Route>
-        <Route path='/home' element={<Home/>}></Route> */}
+          <Route path='/myItems' element={<RequiredAuth>
+            <MyItems />
+          </RequiredAuth>}></Route>
         </Routes>
       </div>
       <Footer />

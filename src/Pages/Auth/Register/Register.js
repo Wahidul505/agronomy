@@ -57,7 +57,7 @@ const Register = () => {
                 {
                     passwordError && <p className='text-red-400'>{passwordError}</p>
                 }
-                <input className='mt-4 p-2 rounded bg-green-700 text-white hover:text-green-700 hover:bg-white text-xl cursor-pointer' type="submit" value="Register" />
+                <input className='font-semibold mt-4 p-2 rounded bg-green-700 text-white hover:text-green-700 hover:bg-amber-200 text-xl cursor-pointer' type="submit" value="Register" />
             </form>
             <Link to='/login' className='underline text-yellow-200 md:text-lg px-3 hover:text-green-300'>Login?</Link>
             <SocialLogin />

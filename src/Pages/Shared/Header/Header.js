@@ -31,6 +31,9 @@ const Header = () => {
         else if(pathname === '/addInventory'){
             setHeader('Add Item')
         }
+        else if(pathname === '/myItems'){
+            setHeader('My Products')
+        }
     }, [pathname]);
     return (
         <div className='nav-bar mb-24'>
@@ -49,6 +52,7 @@ const Header = () => {
                             <>
                                 <NavLink to='/manageInventories'>Manage</NavLink>
                                 <NavLink to='/addInventory'>Add</NavLink>
+                                <NavLink to='/myItems'>My Items</NavLink>
                                 <span><button onClick={() => signOut(auth)} className='underline'>Logout</button></span>
                             </>
                     }

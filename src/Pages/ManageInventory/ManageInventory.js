@@ -52,7 +52,7 @@ const ManageInventory = () => {
                                     {item.supplier}
                                 </td>
                                 <td className="px-6 py-4 text-right">
-                                    <button className="font-medium text-green-600 dark:text-green-500 hover:underline">Delete</button>
+                                    <button className="font-medium text-red-400 hover:underline">Delete</button>
                                 </td>
                             </tr>)
                         }

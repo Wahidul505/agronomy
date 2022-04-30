@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
 import auth from '../../firebase.init';
 
 const AddInventory = () => {
@@ -14,7 +15,7 @@ const AddInventory = () => {
     const handleAddItem = e => {
         e.preventDefault();
         const productInfo = {
-            productName: nameRef.current.value,
+            name: nameRef.current.value,
             image: imageRef.current.value,
             description: descriptionRef.current.value,
             price: priceRef.current.value,
@@ -30,7 +31,14 @@ const AddInventory = () => {
             body: JSON.stringify(productInfo)
         })
             .then(res => res.json())
-            .then(data => console.log(data));
+            .then(data => {
+                if (!data.success) {
+                    toast.error(data.message, { id: 'addError' })
+                }
+                else {
+                    toast.success(data.message, { id: 'addSuccess' });
+                }
+            });
     }
     return (
         <div className='w-5/6 md:w-1/2 mx-auto'>

@@ -5,14 +5,14 @@ import { useNavigate } from 'react-router-dom';
 const ManageInventory = () => {
     const [items, setItems] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/items')
+        fetch('https://agronomy-warehouse.herokuapp.com/items')
             .then(res => res.json())
             .then(data => setItems(data));
     }, []);
     const navigate = useNavigate();
 
     const handleDeleteItem = id => {
-        fetch(`http://localhost:5000/item/${id}`, {
+        fetch(`https://agronomy-warehouse.herokuapp.com/item/${id}`, {
             method: 'DELETE'
         }).then(res => res.json()).then(data => {
             const remaining = items.filter(item => item._id !== id);

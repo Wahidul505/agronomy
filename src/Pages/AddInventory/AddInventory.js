@@ -18,12 +18,12 @@ const AddInventory = () => {
             name: nameRef.current.value,
             image: imageRef.current.value,
             description: descriptionRef.current.value,
-            price: priceRef.current.value,
-            quantity: quantityRef.current.value,
+            price: parseFloat(priceRef.current.value),
+            quantity: parseInt(Math.round(quantityRef.current.value)),
             supplier: supplierRef.current.value,
             email: email
         }
-        fetch('http://localhost:5000/item', {
+        fetch('https://agronomy-warehouse.herokuapp.com/item', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -38,6 +38,7 @@ const AddInventory = () => {
                 else {
                     toast.success(data.message, { id: 'addSuccess' });
                 }
+                e.target.reset();
             });
     }
     return (

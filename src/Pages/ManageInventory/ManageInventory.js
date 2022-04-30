@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {MdOutlineAddBox} from 'react-icons/md';
+import { MdOutlineAddBox } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
 const ManageInventory = () => {
@@ -10,10 +10,19 @@ const ManageInventory = () => {
             .then(data => setItems(data));
     }, []);
     const navigate = useNavigate();
+
+    const handleDeleteItem = id => {
+        fetch(`http://localhost:5000/item/${id}`, {
+            method: 'DELETE'
+        }).then(res => res.json()).then(data => {
+            const remaining = items.filter(item => item._id !== id);
+            setItems(remaining);
+        })
+    }
     return (
         <div>
             <div className='flex justify-end mb-4'>
-            <button onClick={()=>navigate('/addInventory')} className='flex items-center text-2xl gap-2 text-white hover:text-amber-200'><MdOutlineAddBox/> Add Item</button>
+                <button onClick={() => navigate('/addInventory')} className='flex items-center text-2xl gap-2 text-white hover:text-amber-200'><MdOutlineAddBox /> Add Item</button>
             </div>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -52,7 +61,7 @@ const ManageInventory = () => {
                                     {item.supplier}
                                 </td>
                                 <td className="px-6 py-4 text-right">
-                                    <button className="font-medium text-red-400 hover:underline">Delete</button>
+                                    <button onClick={() => handleDeleteItem(item._id)} className="font-medium text-red-400 hover:underline">Delete</button>
                                 </td>
                             </tr>)
                         }

@@ -30,12 +30,12 @@ const Inventory = () => {
             </div>
             <button className='rounded bg-green-600 text-white hover:text-green-600 hover:bg-white text-xl cursor-pointer p-2 mt-4 w-full lg:w-60 mb-12 md:mb-0'>Delivered</button>
             </div>
-            <div className='bg-green-400 rounded py-2'>
-                <h1 className='text-center text-3xl text-green-700'>Restock this Item</h1>
+            <div className='border-2 border-green-600 rounded-lg py-2'>
+                <h1 className='text-center text-3xl text-green-600'>Restock this Item</h1>
                 <hr className='w-2/3 mx-auto'/>
                 <form className='flex flex-col mt-8 px-3'>
-                    <label className='text-lg mb-1 text-gray-700' htmlFor="quantity">Quantity of Item to Restock</label>    
-                    <input className='text-lg rounded px-1' type="number" name='quantity' id='quantity' placeholder='Enter a number of quantity' />
+                    <label className='text-lg mb-1 text-gray-300' htmlFor="quantity">Quantity of Item to Restock</label>    
+                    <input className='text-xl rounded p-2' type="number" name='quantity' id='quantity' placeholder='Enter a number of quantity' />
                     <input className='mt-4 p-2 rounded bg-green-600 text-white hover:text-green-600 hover:bg-white text-xl cursor-pointer' type="submit" value="Restock" />
                 </form>
             </div>

@@ -3,6 +3,7 @@ import Banner from '../Banner/Banner';
 import ItemCount from '../ItemCount/ItemCount';
 import Items from '../Items/Items';
 import SortedItems from '../SortedItems/SortedItems';
+import Survey from '../Survey/Survey';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <Items/>
             <ItemCount/>
             <SortedItems/>
+            <Survey/>
         </div>
     );
 };

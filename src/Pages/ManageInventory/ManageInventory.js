@@ -12,6 +12,10 @@ const ManageInventory = () => {
     const navigate = useNavigate();
 
     const handleDeleteItem = id => {
+        const proceed = window.confirm();
+        if (!proceed) {
+            return;
+        }
         fetch(`https://agronomy-warehouse.herokuapp.com/item/${id}`, {
             method: 'DELETE'
         }).then(res => res.json()).then(data => {
@@ -25,8 +29,8 @@ const ManageInventory = () => {
                 <button onClick={() => navigate('/addInventory')} className='flex items-center text-2xl gap-2 text-white hover:text-amber-200'><MdOutlineAddBox /> Add Item</button>
             </div>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table className="w-full text-sm text-left text-gray-400">
+                    <thead className="text-xs uppercase bg-gray-700 text-gray-200">
                         <tr>
                             <th scope="col" className="px-6 py-3">
                                 Product Name
@@ -47,8 +51,8 @@ const ManageInventory = () => {
                     </thead>
                     <tbody>
                         {
-                            items.map(item => <tr key={item._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            items.map(item => <tr key={item._id} className="border-b bg-gray-800 border-gray-700">
+                                <th scope="row" className="px-6 py-4 font-medium text-white whitespace-nowrap">
                                     {item.name}
                                 </th>
                                 <td className="px-6 py-4">

@@ -25,13 +25,13 @@ const Header = () => {
         else if (pathname.includes('inventory/')) {
             setHeader('Inventory')
         }
-        else if(pathname === '/manageInventories'){
+        else if (pathname === '/manageInventories') {
             setHeader('Manage Inventories')
         }
-        else if(pathname === '/addInventory'){
+        else if (pathname === '/addInventory') {
             setHeader('Add Item')
         }
-        else if(pathname === '/myItems'){
+        else if (pathname === '/myItems') {
             setHeader('My Products')
         }
     }, [pathname]);
@@ -41,7 +41,7 @@ const Header = () => {
                 <h1 className='text-3xl'>Agronomy</h1>
                 <nav className={`flex gap-1 md:gap-6 text-xl md:flex md:flex-row ${show ? 'flex-col' : 'hidden'}`}>
                     <NavLink to='/home'>Home</NavLink>
-
+                    <NavLink to='/blogs'>Blogs</NavLink>
                     {
                         !user ?
                             <>

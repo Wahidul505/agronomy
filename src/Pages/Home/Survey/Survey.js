@@ -19,14 +19,14 @@ const Survey = () => {
         <div className='grid grid-col-1 md:grid-cols-2 gap-12 mt-24'>
                 <div className='flex items-center bg-gray-800 bg-opacity-70 px-4 rounded'>
                 <img className='w-40' src="https://i.ibb.co/W59qgww/agronomy-01-2-1.png" alt="" />
-                <p className='text-gray-200 text-4xl'>Join With Agronomy</p>
+                <p className='text-gray-200 text-4xl'>Product Survey</p>
                 </div>
             <div className='row-span-2 flex flex-col bg-gray-800 bg-opacity-70 rounded'>
                 <img className='w-full rounded-t' src={expensiveProduct.image} alt="" />
                 <div className='p-8 text-gray-200'>
                     <h1 className='text-3xl'>Most Expensive Product</h1>
-                    <hr />
-                    <p className='text-2xl'>{expensiveProduct.name}</p>
+                    <hr className='mb-2'/>
+                    <p className='text-2xl text-green-300'>{expensiveProduct.name}</p>
                     <p className='text-xl'>{expensiveProduct.price} Tk</p>
                 </div>
             </div>
@@ -34,8 +34,8 @@ const Survey = () => {
                 <img className='w-full h-full rounded-l ' src={highestProduct.image} alt="" />
                 <div className=' p-8 text-gray-200'>
                     <h1 className='text-3xl'>Most Expensive Product</h1>
-                    <hr />
-                    <p className='text-2xl'>{highestProduct.name}</p>
+                    <hr className='mb-2'/>
+                    <p className='text-2xl text-green-300'>{highestProduct.name}</p>
                     <p className='text-xl'>{highestProduct.price} Tk</p>
                 </div>
             </div>

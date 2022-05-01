@@ -47,7 +47,7 @@ const Register = () => {
     }, [registerError, updateError, from, navigate, user]);
     return (
         <div className='w-5/6 md:w-1/2 mx-auto'>
-            <h1 className='text-center text-2xl md:text-3xl text-green-700'>Create An Account</h1>
+            <h1 className='text-center text-2xl md:text-3xl text-green-600'>Create An Account</h1>
             <hr className='w-2/3 mx-auto' />
             <form onSubmit={handleRegister} className='flex flex-col mt-12 px-3 gap-4'>
                 <input ref={nameRef} className='px-1 bg-transparent border-b-2 border-green-700 text-xl text-white focus:outline-none' type="text" name='name' id='name' placeholder='Enter Your Name' required />
@@ -57,7 +57,7 @@ const Register = () => {
                 {
                     passwordError && <p className='text-red-400'>{passwordError}</p>
                 }
-                <input className='font-semibold mt-4 p-2 rounded bg-green-700 text-white hover:text-green-700 hover:bg-amber-200 text-xl cursor-pointer' type="submit" value="Register" />
+                <input className='font-semibold mt-4 p-2 rounded bg-green-600 text-white hover:bg-green-500 text-xl cursor-pointer' type="submit" value="Register" />
             </form>
             <Link to='/login' className='underline text-yellow-200 md:text-lg px-3 hover:text-green-300'>Login?</Link>
             <SocialLogin />

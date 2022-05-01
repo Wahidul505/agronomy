@@ -34,6 +34,12 @@ const Header = () => {
         else if (pathname === '/myItems') {
             setHeader('My Products')
         }
+        else if (pathname === '/blogs') {
+            setHeader('Blogs')
+        }
+        else{
+            setHeader('');
+        }
     }, [pathname]);
     return (
         <div className='nav-bar mb-24'>

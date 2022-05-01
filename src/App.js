@@ -10,6 +10,7 @@ import Home from './Pages/Home/Home/Home';
 import Inventory from './Pages/Inventory/Inventory';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import MyItems from './Pages/MyItems/MyItems';
+import NotFound from './Pages/NotFound/NotFound';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 
@@ -40,6 +41,7 @@ function App() {
             <MyItems />
           </RequiredAuth>}></Route>
           <Route path='/blogs' element={<Blogs />}></Route>
+          <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </div>
       <Footer />

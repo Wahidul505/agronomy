@@ -5,6 +5,7 @@ import AddInventory from './Pages/AddInventory/AddInventory';
 import Login from './Pages/Auth/Login/Login';
 import Register from './Pages/Auth/Register/Register';
 import RequiredAuth from './Pages/Auth/RequiredAuth/RequiredAuth';
+import ResetPass from './Pages/Auth/ResetPass/ResetPass';
 import Blogs from './Pages/Blogs/Blogs/Blogs';
 import Home from './Pages/Home/Home/Home';
 import Inventory from './Pages/Inventory/Inventory';
@@ -28,6 +29,7 @@ function App() {
           <Route path='/home' element={<Home />}></Route>
           <Route path='/register' element={<Register />}></Route>
           <Route path='/login' element={<Login />}></Route>
+          <Route path='/resetPassword' element={<ResetPass />}></Route>
           <Route path='/inventory/:id' element={<RequiredAuth>
             <Inventory />
           </RequiredAuth>}></Route>

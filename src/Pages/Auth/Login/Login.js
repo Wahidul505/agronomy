@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
@@ -17,6 +17,7 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
     const handleLogin = e => {
         e.preventDefault();
@@ -24,6 +25,13 @@ const Login = () => {
         const password = passwordRef.current.value;
         signInWithEmailAndPassword(email, password);
     };
+
+    const handleResetPassword = async () => {
+        const email = emailRef.current.value;
+        await sendPasswordResetEmail(email);
+        toast.success('Email Sent to Reset Password', { id: 'resetSuccess' });
+    }
+
     useEffect(() => {
         if (error) {
             if (error.message.includes('wrong-password')) {
@@ -37,6 +45,7 @@ const Login = () => {
             }
         }
         if (user) {
+            toast.success('Logged In', { id: 'loginSuccess' });
             navigate(from, { replace: true });
         }
     }, [error, navigate, from, user]);
@@ -50,7 +59,10 @@ const Login = () => {
                 <input className='font-semibold mt-4 p-2 rounded bg-green-600 text-white hover:bg-green-500 text-xl cursor-pointer' type="submit" value="Login" />
             </form>
             <Link to='/register' className='underline text-yellow-200 md:text-lg px-3 hover:text-green-300'>Create an Account</Link>
-            <p className='text-right text-yellow-200 md:text-lg px-3 hover:text-green-300'><button>Forgot Password?</button></p>
+            <p className='text-right text-yellow-200 md:text-lg px-3 hover:text-green-300'>
+                <button onClick={handleResetPassword}>
+                    Forgot Password?
+                </button></p>
             <SocialLogin />
         </div>
     );

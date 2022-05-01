@@ -20,7 +20,7 @@ const Register = () => {
         user,
         loading,
         registerError,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const handleRegister = async e => {
@@ -42,6 +42,8 @@ const Register = () => {
             toast.error('Something Went Wrong', { id: 'registerError' })
         }
         else if (user) {
+            toast.success('Account Created', { id: 'registerSuccess' });
+            toast.success('Verification Sent', { id: 'sendVerificationSuccess' });
             navigate(from, { replace: true });
         }
     }, [registerError, updateError, from, navigate, user]);

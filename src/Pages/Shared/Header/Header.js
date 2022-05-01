@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { IoMdClose } from 'react-icons/io';
 import { IoIosMenu } from 'react-icons/io';
 import './Header.css';
@@ -12,6 +12,7 @@ const Header = () => {
     const { pathname } = useLocation();
     const [header, setHeader] = useState('');
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
     useEffect(() => {
         if (pathname === '/' || pathname === '/home') {
             setHeader('Home')
@@ -43,8 +44,8 @@ const Header = () => {
     }, [pathname]);
     return (
         <div className='nav-bar mb-24'>
-            <div className='flex flex-col md:flex-row justify-between p-4 md:px-12 gap-2 text-white'>
-                <h1 className='text-3xl'>Agronomy</h1>
+            <div className='flex flex-col md:flex-row justify-between p-4 md:px-10 gap-2 text-white'>
+                <img onClick={()=>navigate('/')} className='-mt-10 -ml-4 w-24 md:w-28 h-24 md:h-28 cursor-pointer' src="https://i.ibb.co/W59qgww/agronomy-01-2-1.png" alt="" />
                 <nav className={`flex gap-1 md:gap-6 text-xl md:flex md:flex-row ${show ? 'flex-col' : 'hidden'}`}>
                     <NavLink to='/home'>Home</NavLink>
                     <NavLink to='/blogs'>Blogs</NavLink>

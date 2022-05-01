@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from '../Banner/Banner';
 import ItemCount from '../ItemCount/ItemCount';
 import Items from '../Items/Items';
+import SortedItems from '../SortedItems/SortedItems';
 
 const Home = () => {
     return (
@@ -9,6 +10,7 @@ const Home = () => {
             <Banner />
             <Items/>
             <ItemCount/>
+            <SortedItems/>
         </div>
     );
 };

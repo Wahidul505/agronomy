@@ -5,19 +5,15 @@ const ItemDetails = ({ item }) => {
     const { _id, name, image, description, price, quantity, supplier } = item;
     const navigate = useNavigate();
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 text-white rounded'>
-            <img className='w-60 h-full rounded' src={image} alt="" />
-            <div className='flex flex-col justify-between'>
-                <div>
-                <p className='text-2xl text-amber-200'>{name}</p>
-                <p>{description}</p>
-                <div>
-                    <p>Tk {price}</p>
-                    <p>Quantity: {quantity}</p>
-                </div>
-                <p>From: {supplier}</p>
-                </div>
-                <button onClick={() => navigate(`/inventory/${_id}`)} className='mt-3 w-60 md:w-1/2 bg-white text-green-600 rounded px-1 font-semibold'>Modify</button>
+        <div className='flex flex-col justify-between text-white rounded'>
+            <img className='w-1/2 md:w-full h-72 rounded' src={image} alt="" />
+            <p className='text-2xl text-amber-200'>{name}</p>
+            <p className='text-gray-300'>{description}</p>
+            <p className='text-lg'><span className='text-green-300'>Tk</span> {price}</p>
+            <p><span className='text-green-300'>Quantity:</span> {quantity}</p>
+            <p><span className='text-green-300'>Supplier:</span> {supplier}</p>
+            <div>
+                <button onClick={() => navigate(`/inventory/${_id}`)} className='mt-3 w-1/2 md:w-full bg-green-600 text-amber-200 rounded px-1 py-2 font-semibold'>Modify</button>
             </div>
         </div>
     );

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import RoundedCard from '../RoundedCard/RoundedCard';
 
 const ItemCount = () => {
     const [count, setCount] = useState(0)
@@ -8,9 +9,10 @@ const ItemCount = () => {
         .then(data => setCount(data.count));
     },[]);
     return (
-        <div className='mt-20'>
-            <h1 className='w-28 h-28 mx-auto rounded-full bg-green-600 border-2 border-white flex justify-center items-center text-white text-3xl font-semibold'>{count}</h1>
-            <h1 className='text-center text-white text-xl mt-2'>Total Different Items</h1>
+        <div className='flex justify-center'>
+            <RoundedCard>
+                <h1>{count}</h1>
+            </RoundedCard>
         </div>
     );
 };

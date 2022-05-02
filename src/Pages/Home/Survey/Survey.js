@@ -30,7 +30,7 @@ const Survey = () => {
                     <p className='text-xl'>{expensiveProduct.price} Tk</p>
                 </div>
             </div>
-            <div className='flex bg-gray-800 bg-opacity-70 rounded'>
+            <div className='flex bg-gray-800 bg-opacity-70 rounded lg:flex-row flex-col'>
                 <img className='w-full h-full rounded-l ' src={highestProduct.image} alt="" />
                 <div className=' p-8 text-gray-200'>
                     <h1 className='text-3xl'>Most Stocked Product</h1>

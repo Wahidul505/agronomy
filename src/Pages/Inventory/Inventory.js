@@ -50,6 +50,7 @@ const Inventory = () => {
         }).then(res => res.json()).then(data => {
             setQuantity(totalQuantity);
         })
+        e.target.reset();
     }
     return (
         <div>

@@ -4,11 +4,20 @@ import { useNavigate } from 'react-router-dom';
 
 const ManageInventory = () => {
     const [items, setItems] = useState([]);
+    const [count, setCount] = useState(0);
+    const [page, setPage] = useState(0);
+    const [number, setNumber] = useState(5);
     useEffect(() => {
-        fetch('https://agronomy-warehouse.herokuapp.com/items')
+        fetch('https://agronomy-warehouse.herokuapp.com/itemCount')
+            .then(res => res.json())
+            .then(data => setCount(parseInt(data.count)));
+    }, []);
+
+    useEffect(() => {
+        fetch(`https://agronomy-warehouse.herokuapp.com/items?page=${page}&limit=${number}`)
             .then(res => res.json())
             .then(data => setItems(data));
-    }, []);
+    }, [page, number]);
     const navigate = useNavigate();
 
     const handleDeleteItem = id => {
@@ -22,7 +31,7 @@ const ManageInventory = () => {
             const remaining = items.filter(item => item._id !== id);
             setItems(remaining);
         })
-    }
+    };
     return (
         <div>
             <div className='flex justify-end mb-4'>
@@ -71,6 +80,20 @@ const ManageInventory = () => {
                         }
                     </tbody>
                 </table>
+            </div>
+            <div className='flex gap-4 justify-end mt-6'>
+                {
+                    [...Array(Math.ceil(count / number)).keys()].map(number => <button
+                        onClick={() => setPage(number)}
+                        className={page === number ? 'px-2 border-2 border-green-700 bg-green-700 text-gray-200 rounded' : 'border-2 border-green-700 text-gray-200 rounded px-2'}
+                        key={number}
+                    >{number + 1}</button>)
+                }
+                <select onChange={(e) => setNumber(e.target.value)}>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
             </div>
         </div>
     );

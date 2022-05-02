@@ -5,6 +5,8 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import toast from 'react-hot-toast';
+import Spinner from '../../Shared/Spinner/Spinner';
+import useToken from '../../../hooks/useToken';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -21,7 +23,9 @@ const Register = () => {
         loading,
         registerError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [updateProfile, updating, ] = useUpdateProfile(auth);
+
+    const [token] = useToken(user);
 
     const handleRegister = async e => {
         e.preventDefault();
@@ -38,15 +42,18 @@ const Register = () => {
         await updateProfile({ displayName: name });
     };
     useEffect(() => {
-        if (registerError || updateError) {
+        if (registerError) {
             toast.error('Something Went Wrong', { id: 'registerError' })
         }
-        else if (user) {
+        else if (token) {
             toast.success('Account Created', { id: 'registerSuccess' });
             toast.success('Verification Sent', { id: 'sendVerificationSuccess' });
             navigate(from, { replace: true });
         }
-    }, [registerError, updateError, from, navigate, user]);
+    }, [registerError, from, navigate, token]);
+    if (loading || updating) {
+        return <Spinner />
+    }
     return (
         <div className='w-5/6 md:w-1/2 mx-auto'>
             <h1 className='text-center text-2xl md:text-3xl text-green-600'>Create An Account</h1>

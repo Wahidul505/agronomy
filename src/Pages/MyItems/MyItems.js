@@ -1,16 +1,29 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
 import auth from '../../firebase.init';
 
 const MyItems = () => {
     const [user] = useAuthState(auth);
     const email = user?.email;
     const [items, setItems] = useState([]);
+    const token = localStorage.getItem('token');
     useEffect(() => {
-        fetch(`https://agronomy-warehouse.herokuapp.com/myItem?email=${email}`)
-            .then(res => res.json())
-            .then(data => setItems(data));
-    }, [email]);
+        if (email) {
+            fetch(`https://agronomy-warehouse.herokuapp.com/myItem?email=${email}&token=${token}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (!data.success) {
+                        toast.error(data.message, { id: 'unauthorizedError' });
+                        signOut(auth);
+                    }
+                    else if (data.success) {
+                        setItems(data.data);
+                    }
+                });
+        }
+    }, [email, token]);
 
     const handleDeleteMyItem = id => {
         const proceed = window.confirm();

@@ -33,10 +33,10 @@ const Survey = () => {
             <div className='flex bg-gray-800 bg-opacity-70 rounded'>
                 <img className='w-full h-full rounded-l ' src={highestProduct.image} alt="" />
                 <div className=' p-8 text-gray-200'>
-                    <h1 className='text-3xl'>Most Expensive Product</h1>
+                    <h1 className='text-3xl'>Most Stocked Product</h1>
                     <hr className='mb-2'/>
                     <p className='text-2xl text-green-300'>{highestProduct.name}</p>
-                    <p className='text-xl'>{highestProduct.price} Tk</p>
+                    <p className='text-xl'>Quantity: {highestProduct.quantity}</p>
                 </div>
             </div>
         </div>

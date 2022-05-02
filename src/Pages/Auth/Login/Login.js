@@ -3,6 +3,8 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
+import Spinner from '../../Shared/Spinner/Spinner';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
@@ -17,7 +19,7 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    
+
 
     const handleLogin = e => {
         e.preventDefault();
@@ -25,6 +27,8 @@ const Login = () => {
         const password = passwordRef.current.value;
         signInWithEmailAndPassword(email, password);
     };
+
+    const [token] = useToken(user);
 
     useEffect(() => {
         if (error) {
@@ -38,11 +42,15 @@ const Login = () => {
                 toast.error('Something Went Wrong', { id: "loginError" });
             }
         }
-        if (user) {
+        if (token) {
             toast.success('Logged In', { id: 'loginSuccess' });
             navigate(from, { replace: true });
         }
-    }, [error, navigate, from, user]);
+    }, [error, navigate, from, token]);
+
+    if (loading) {
+        return <Spinner />
+    }
     return (
         <div className='w-5/6 md:w-1/2 mx-auto'>
             <h1 className='text-center text-2xl md:text-3xl text-green-600'>Login to Your Account</h1>
@@ -54,7 +62,7 @@ const Login = () => {
             </form>
             <Link to='/register' className='underline text-yellow-200 md:text-lg px-3 hover:text-green-300'>Create an Account</Link>
             <p className='text-right text-yellow-200 md:text-lg px-3 hover:text-green-300'>
-                <button onClick={()=>navigate('/resetPassword')}>
+                <button onClick={() => navigate('/resetPassword')}>
                     Forgot Password?
                 </button></p>
             <SocialLogin />

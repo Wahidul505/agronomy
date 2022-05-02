@@ -4,20 +4,28 @@ import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
+import Spinner from '../../Shared/Spinner/Spinner';
 
 const SocialLogin = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+    const [token] = useToken(user);
     useEffect(() => {
         if (error) {
             toast.error('Something Went Wrong', { id: 'socialLoginError' })
         }
-        else if (user) {
+        else if (token) {
             navigate(from, { replace: true });
         }
-    }, [error, from, navigate, user]);
+    }, [error, from, navigate, token]);
+
+    if (loading) {
+        return <Spinner />
+    }
     return (
         <div className='px-4'>
             <div className='flex items-center gap-3 px-3 mb-4'>

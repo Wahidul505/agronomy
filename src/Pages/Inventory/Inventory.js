@@ -62,13 +62,13 @@ const Inventory = () => {
                                 <p className='text-3xl text-lime-200'>{item.name}</p>
                                 <p><small>{item.description}</small></p>
                                 <p className='text-lg'>Tk <span className='text-yellow-300'>{item.price}</span></p>
-                                <p className='text-lg'>Quantity: <span className='text-yellow-300'>{quantity}</span></p>
+                                <p className='text-lg'>{quantity > 0 ? 'Quantity:' : 'Sold'} <span className='text-yellow-300'>{quantity > 0 && quantity}</span></p>
                             </div>
                             <div>
                                 <p><small>Supplier: <span className='text-lime-200'>{item.supplier}</span></small></p>
                                 <p><small>Added by: <span className='text-lime-200'>{item.email ? item.email : ''}</span></small></p>
                                 <p><small className='bg-gray-500 rounded px-1'>id:{id}</small></p>
-                                <button onClick={() => handleDelivered(item._id)} className='rounded bg-green-600 text-white hover:text-green-600 hover:bg-white text-xl cursor-pointer p-2 mt-4 w-full lg:w-60 mb-12 md:mb-0'>Delivered</button>
+                                <button onClick={() => handleDelivered(item._id)} className={quantity > 0 ? 'rounded bg-green-600 text-white hover:text-green-600 hover:bg-white text-xl cursor-pointer p-2 mt-4 w-full lg:w-60 mb-12 md:mb-0' : 'hidden'}>Delivered</button>
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import auth from '../../firebase.init';
+import { FiTrash } from 'react-icons/fi';
 
 const MyItems = () => {
     const [user] = useAuthState(auth);
@@ -80,7 +81,7 @@ const MyItems = () => {
                                     {item.supplier}
                                 </td>
                                 <td className="px-6 py-4 text-right">
-                                    <button onClick={() => handleDeleteMyItem(item._id)} className="font-medium text-red-400 hover:underline">Delete</button>
+                                    <button onClick={() => handleDeleteMyItem(item._id)} className="font-medium text-red-400 hover:text-red-500 text-xl"><FiTrash /></button>
                                 </td>
                             </tr>)
                         }

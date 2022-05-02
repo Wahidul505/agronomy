@@ -8,6 +8,7 @@ import RequiredAuth from './Pages/Auth/RequiredAuth/RequiredAuth';
 import ResetPass from './Pages/Auth/ResetPass/ResetPass';
 import Blogs from './Pages/Blogs/Blogs/Blogs';
 import Home from './Pages/Home/Home/Home';
+import Survey from './Pages/Home/Survey/Survey';
 import Inventory from './Pages/Inventory/Inventory';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import MyItems from './Pages/MyItems/MyItems';
@@ -43,6 +44,7 @@ function App() {
             <MyItems />
           </RequiredAuth>}></Route>
           <Route path='/blogs' element={<Blogs />}></Route>
+          <Route path='/survey' element={<Survey />}></Route>
           <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </div>

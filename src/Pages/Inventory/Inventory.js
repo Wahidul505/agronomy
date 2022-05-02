@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useParams } from 'react-router-dom';
+import { BiLeftArrowAlt } from 'react-icons/bi';
 
 const Inventory = () => {
     const { id } = useParams();
@@ -50,7 +51,6 @@ const Inventory = () => {
         }).then(res => res.json()).then(data => {
             setQuantity(totalQuantity);
         })
-        e.target.reset();
     }
     return (
         <div>
@@ -84,7 +84,10 @@ const Inventory = () => {
                     </form>
                 </div>
             </div>
-            <p className='text-right mt-12'><Link to='/manageInventories' className='text-white hover:text-green-300 text-xl underline'>Manage Inventories</Link></p>
+            <div className='flex justify-between mt-12'>
+                <p className='flex gap-2 items-center text-white hover:text-green-300 text-xl underline'><BiLeftArrowAlt className='text-2xl'/><Link to='/home'>Back to Home</Link></p>
+                <p ><Link to='/manageInventories' className='text-white hover:text-green-300 text-xl underline'>Manage Inventories</Link></p>
+            </div>
         </div>
     );
 };

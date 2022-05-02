@@ -19,7 +19,7 @@ const Survey = () => {
         <div className='grid grid-col-1 md:grid-cols-2 gap-12 mt-24'>
                 <div className='flex items-center bg-gray-800 bg-opacity-70 px-4 rounded'>
                 <img className='w-40' src="https://i.ibb.co/W59qgww/agronomy-01-2-1.png" alt="" />
-                <p className='text-gray-200 text-4xl'>Product Survey</p>
+                <p className='text-gray-200 text-4xl'>Products Survey</p>
                 </div>
             <div className='row-span-2 flex flex-col bg-gray-800 bg-opacity-70 rounded'>
                 <img className='w-full rounded-t' src={expensiveProduct.image} alt="" />

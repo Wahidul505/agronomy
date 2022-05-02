@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MdOutlineAddBox } from 'react-icons/md';
+import { FiTrash } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 
 const ManageInventory = () => {
@@ -74,7 +75,7 @@ const ManageInventory = () => {
                                     {item.supplier}
                                 </td>
                                 <td className="px-6 py-4 text-right">
-                                    <button onClick={() => handleDeleteItem(item._id)} className="font-medium text-red-400 hover:underline">Delete</button>
+                                    <button onClick={() => handleDeleteItem(item._id)} className="font-medium text-red-400 hover:text-red-500 text-xl"><FiTrash /></button>
                                 </td>
                             </tr>)
                         }

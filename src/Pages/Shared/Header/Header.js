@@ -38,17 +38,21 @@ const Header = () => {
         else if (pathname === '/blogs') {
             setHeader('Blogs')
         }
-        else{
+        else if (pathname === '/survey') {
+            setHeader('Products Survey')
+        }
+        else {
             setHeader('');
         }
     }, [pathname]);
     return (
         <div className='nav-bar mb-24'>
             <div className='flex flex-col md:flex-row justify-between p-4 md:px-10 gap-2 text-white'>
-                <img onClick={()=>navigate('/')} className='-mt-10 md:-mt-12 -ml-4 w-24 md:w-32 h-24 md:h-32 cursor-pointer' src="https://i.ibb.co/W59qgww/agronomy-01-2-1.png" alt="" />
+                <img onClick={() => navigate('/')} className='-mt-10 md:-mt-12 -ml-4 w-24 md:w-32 h-24 md:h-32 cursor-pointer' src="https://i.ibb.co/W59qgww/agronomy-01-2-1.png" alt="" />
                 <nav className={`flex gap-1 md:gap-6 text-xl md:flex md:flex-row ${show ? 'flex-col' : 'hidden'}`}>
                     <NavLink to='/home'>Home</NavLink>
                     <NavLink to='/blogs'>Blogs</NavLink>
+                    <NavLink to='/survey'>Survey</NavLink>
                     {
                         !user ?
                             <>

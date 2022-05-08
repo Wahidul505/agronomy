@@ -79,7 +79,7 @@ const Inventory = () => {
                     <hr className='w-2/3 mx-auto' />
                     <form onSubmit={(e) => handleRestock(e, item._id)} className='flex flex-col mt-8 px-3'>
                         <label className='text-lg mb-1 text-gray-300' htmlFor="quantity">Quantity of Item to Restock</label>
-                        <input className='text-xl rounded p-2' type="number" name='quantity' id='quantity' placeholder='Enter a number of quantity' />
+                        <input className='text-xl rounded p-2' type="number" name='quantity' id='quantity' placeholder='Enter a number of quantity' required/>
                         <input className='mt-4 p-2 rounded bg-green-600 text-white hover:text-green-600 hover:bg-white text-xl cursor-pointer' type="submit" value="Restock" />
                     </form>
                 </div>

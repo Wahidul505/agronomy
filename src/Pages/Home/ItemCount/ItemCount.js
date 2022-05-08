@@ -3,13 +3,15 @@ import RoundedCard from '../RoundedCard/RoundedCard';
 
 const ItemCount = () => {
     const [count, setCount] = useState(0)
-    useEffect(()=>{
+    useEffect(() => {
         fetch('https://agronomy-warehouse.herokuapp.com/itemCount')
-        .then(res => res.json())
-        .then(data => setCount(data.count));
-    },[]);
+            .then(res => res.json())
+            .then(data => setCount(data.count));
+    }, []);
     return (
-        <div className='text-center text-gray-300 py-12 bg-black lg:-mx-8 mt-20'>
+        <div className='text-center text-gray-300 py-12 bg-black lg:-mx-8 mt-20' data-aos="fade-up"
+            data-aos-easing="linear"
+            data-aos-duration="2000">
             <h1 className='text-8xl mb-2'>{count}</h1>
             <p className='text-xl'>Total Different Products</p>
         </div>

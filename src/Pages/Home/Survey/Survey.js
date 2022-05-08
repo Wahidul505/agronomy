@@ -21,8 +21,8 @@ const Survey = () => {
                 <img className='w-40' src="https://i.ibb.co/W59qgww/agronomy-01-2-1.png" alt="" />
                 <p className='text-gray-200 text-4xl'>Products Survey</p>
                 </div>
-            <div className='row-span-2 flex flex-col bg-gray-800 bg-opacity-70 rounded'>
-                <img className='w-full rounded-t' src={expensiveProduct.image} alt="" />
+            <div className='row-span-2 flex flex-col bg-gray-800 bg-opacity-70 rounded overflow-hidden'>
+                <img className='w-full h-96 rounded-t' src={expensiveProduct.image} alt="" />
                 <div className='p-8 text-gray-200'>
                     <h1 className='text-3xl'>Most Expensive Product</h1>
                     <hr className='mb-2'/>
@@ -30,8 +30,8 @@ const Survey = () => {
                     <p className='text-xl'>{expensiveProduct.price} Tk</p>
                 </div>
             </div>
-            <div className='flex bg-gray-800 bg-opacity-70 rounded lg:flex-row flex-col'>
-                <img className='w-full h-full rounded-l ' src={highestProduct.image} alt="" />
+            <div className='flex bg-gray-800 bg-opacity-70 rounded lg:flex-row flex-col overflow-hidden'>
+                <img className='w-full lg:w-72 h-full rounded-l ' src={highestProduct.image} alt="" />
                 <div className=' p-8 text-gray-200'>
                     <h1 className='text-3xl'>Most Stocked Product</h1>
                     <hr className='mb-2'/>

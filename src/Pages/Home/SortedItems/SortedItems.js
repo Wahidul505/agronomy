@@ -12,7 +12,7 @@ const SortedItems = () => {
         <div className='mt-20'>
                 <p className='text-center text-gray-300 text-4xl'>Most Stored Products</p>
                 <hr className='mb-6'/>
-            <div className='flex justify-between flex-col md:flex-row items-center lg:px-20'>
+            <div className='flex justify-between flex-col gap-6 md:gap-0 md:flex-row items-center lg:px-20'>
                 {
                     sortedItems.map(item => <RoundedCard key={item._id}>
                         <p className='text-5xl text-green-300'>{item.quantity}</p>

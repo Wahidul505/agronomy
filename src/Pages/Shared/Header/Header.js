@@ -59,13 +59,13 @@ const Header = () => {
         }
     }, [pathname]);
     return (
-        <div className='nav-bar mb-24 h-fit'>
-            <div className='flex flex-col md:flex-row justify-between p-4 md:px-10 text-white h-fit'>
-                <img onClick={() => navigate('/')} className='-mt-10 md:-mt-12 -ml-4 w-24 md:w-32 h-24 md:h-32 cursor-pointer' src="https://i.ibb.co/W59qgww/agronomy-01-2-1.png" alt="" />
+        <div className='nav-bar mb-24 h-fit pb-16'>
+            <div className='flex flex-col md:flex-row justify-between md:items-center md:px-10 text-white h-fit fixed top-0 right-0 left-0 bg-gray-700'>
+                <img onClick={() => navigate('/')} className='-mt-7 pl-2 md:pl-0 md:-mt-8 -mb-6 -ml-4 w-24 md:w-32 h-24 md:h-32 cursor-pointer' src="https://i.ibb.co/W59qgww/agronomy-01-2-1.png" alt="" />
                 <nav className={`flex gap-1 md:gap-6 lg:text-lg md:flex md:flex-row lg:items-center items-start h-fit ${show ? 'flex-col' : 'hidden'}`}>
                     <NavLink to='/home'>Home</NavLink>
-                    <NavLink to='/blogs'>Blogs</NavLink>
                     <NavLink to='/survey'>Survey</NavLink>
+                    <NavLink to='/blogs'>Blogs</NavLink>
                     {
                         !user ?
                             <>
@@ -76,14 +76,14 @@ const Header = () => {
                             <>
                                 <NavLink to='/add-item'>Add Item</NavLink>
                                 <NavLink to='/myItems'>My Items</NavLink>
-                                <span className='bg-gray-700 h-fit p-1 rounded-lg overflow-hidden'>{user?.displayName}</span>
+                                <span className='bg-gray-500 h-fit p-1 rounded-lg overflow-hidden'>{user?.displayName}</span>
                                 <span><button onClick={() => signOut(auth)} className='underline'>Logout</button></span>
                             </>
                     }
                 </nav>
                 <button className='md:hidden absolute top-2 right-3 text-3xl' onClick={() => setShow(!show)}>{show ? <IoMdClose /> : <IoIosMenu />}</button>
             </div>
-            <div className='h-40 md:h-60 lg:h-72 flex items-center font-semibold'>
+            <div className='h-40 md:h-60 lg:h-72 flex items-center font-semibold pt-16'>
                 <div className='px-4 md:px-12'>
                     <p className='text-green-300 text-xl'> / /  Welcome to Agronomy Warehouse</p>
                     <h1 className='text-white text-3xl'>{header}</h1>

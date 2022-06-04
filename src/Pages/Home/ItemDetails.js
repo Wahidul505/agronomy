@@ -16,12 +16,12 @@ const ItemDetails = ({ item }) => {
             <p><span className='text-gray-400'>Quantity:</span> {quantity}</p>
             <p><span className='text-gray-400'>Added By:</span> {user?.email === email ? 'You' : email}</p>
             <div>
-            </div>
                 {user?.email === email &&
                     <button
                         onClick={() => navigate(`/inventory/${_id}`)}
                         className='mt-3 w-3/4 md:w-full bg-teal-700 text-green-200 hover:bg-teal-600 rounded px-1 py-2 font-semibold'>Modify</button>
                 }
+            </div>
         </div>
     );
 };

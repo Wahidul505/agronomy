@@ -1,8 +1,8 @@
 import React from 'react';
-import Banner from '../Banner/Banner';
-import ItemCount from '../ItemCount/ItemCount';
-import Items from '../Items/Items';
-import SortedItems from '../SortedItems/SortedItems';
+import Banner from './Banner';
+import ItemCount from './ItemCount';
+import Items from './Items';
+import SortedItems from './SortedItems';
 import Survey from '../Survey/Survey';
 
 const Home = () => {

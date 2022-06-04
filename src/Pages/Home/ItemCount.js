@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import RoundedCard from '../RoundedCard/RoundedCard';
 
 const ItemCount = () => {
     const [count, setCount] = useState(0)

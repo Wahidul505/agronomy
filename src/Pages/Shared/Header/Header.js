@@ -15,31 +15,40 @@ const Header = () => {
     const navigate = useNavigate();
     useEffect(() => {
         if (pathname === '/' || pathname === '/home') {
-            setHeader('Home')
+            setHeader('Home');
+            setShow(false);
         }
         else if (pathname === '/register') {
-            setHeader('Create Account')
+            setHeader('Create Account');
+            setShow(false);
         }
         else if (pathname === '/login') {
-            setHeader('Login')
+            setHeader('Login');
+            setShow(false);
         }
         else if (pathname.includes('inventory/')) {
-            setHeader('Inventory')
+            setHeader('Inventory');
+            setShow(false);
         }
         else if (pathname === '/manageInventories') {
-            setHeader('Manage Inventories')
+            setHeader('Manage Inventories');
+            setShow(false);
         }
         else if (pathname === '/addInventory') {
-            setHeader('Add Item')
+            setHeader('Add Item');
+            setShow(false);
         }
         else if (pathname === '/myItems') {
-            setHeader('My Products')
+            setHeader('My Products');
+            setShow(false);
         }
         else if (pathname === '/blogs') {
-            setHeader('Blogs')
+            setHeader('Blogs');
+            setShow(false);
         }
         else if (pathname === '/survey') {
-            setHeader('Products Survey')
+            setHeader('Products Survey');
+            setShow(false);
         }
         else {
             setHeader('');
@@ -61,7 +70,6 @@ const Header = () => {
                             </>
                             :
                             <>
-                                <NavLink to='/manageInventories'>Manage</NavLink>
                                 <NavLink to='/addInventory'>Add</NavLink>
                                 <NavLink to='/myItems'>My Items</NavLink>
                                 <span><button onClick={() => signOut(auth)} className='underline'>Logout</button></span>

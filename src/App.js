@@ -7,14 +7,14 @@ import Register from './Pages/Auth/Register/Register';
 import RequiredAuth from './Pages/Auth/RequiredAuth/RequiredAuth';
 import ResetPass from './Pages/Auth/ResetPass/ResetPass';
 import Blogs from './Pages/Blogs/Blogs/Blogs';
-import Home from './Pages/Home/Home/Home';
-import Survey from './Pages/Home/Survey/Survey';
+import Home from './Pages/Home/Home';
+import Survey from './Pages/Survey/Survey';
 import Inventory from './Pages/Inventory/Inventory';
-import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import MyItems from './Pages/MyItems/MyItems';
 import NotFound from './Pages/NotFound/NotFound';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
+import AllItems from './Pages/AllItems/AllItems';
 
 function App() {
   return (
@@ -31,11 +31,11 @@ function App() {
           <Route path='/register' element={<Register />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/resetPassword' element={<ResetPass />}></Route>
+          <Route path='/all-items' element={<RequiredAuth>
+            <AllItems />
+          </RequiredAuth>}></Route>
           <Route path='/inventory/:id' element={<RequiredAuth>
             <Inventory />
-          </RequiredAuth>}></Route>
-          <Route path='/manageInventories' element={<RequiredAuth>
-            <ManageInventory />
           </RequiredAuth>}></Route>
           <Route path='/addInventory' element={<RequiredAuth>
             <AddInventory />

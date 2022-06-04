@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useParams } from 'react-router-dom';
 import { BiLeftArrowAlt } from 'react-icons/bi';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Inventory = () => {
+    const [user] = useAuthState(auth);
     const { id } = useParams();
     const [item, setItem] = useState({});
     const [quantity, setQuantity] = useState(0);
@@ -50,12 +53,14 @@ const Inventory = () => {
             body: JSON.stringify({ quantity: totalQuantity })
         }).then(res => res.json()).then(data => {
             setQuantity(totalQuantity);
+            toast.success('Items Restocked', { id: 'restockSuccess' });
+            e.target.reset();
         })
     }
     return (
         <div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
-                <div className='lg:col-span-2'>
+                <div className='lg:col-span-2 overflow-hidden'>
                     <div className='text-white flex flex-col lg:flex-row gap-3 '>
                         <img className='rounded-lg w-60' src={item.image} alt="" />
                         <div className='flex flex-col justify-between'>
@@ -66,10 +71,12 @@ const Inventory = () => {
                                 <p className='text-lg'>{quantity > 0 ? 'Quantity:' : 'Sold'} <span className='text-yellow-300'>{quantity > 0 && quantity}</span></p>
                             </div>
                             <div>
-                                <p><small>Supplier: <span className='text-lime-200'>{item.supplier}</span></small></p>
                                 <p><small>Added by: <span className='text-lime-200'>{item.email ? item.email : ''}</span></small></p>
-                                <p><small className='bg-gray-500 rounded px-1'>id:{id}</small></p>
-                                <button onClick={() => handleDelivered(item._id)} className={quantity > 0 ? 'rounded bg-green-600 text-white hover:text-green-600 hover:bg-white text-xl cursor-pointer p-2 mt-4 w-full lg:w-60 mb-12 md:mb-0' : 'hidden'}>Delivered</button>
+                                <p><small className='bg-gray-500 rounded px-1'>Item Id: {id}</small></p>
+                                <button
+                                    disabled={user?.email !== item?.email}
+                                    onClick={() => handleDelivered(item._id)}
+                                    className={quantity > 0 ? 'rounded bg-green-600 text-white hover:text-green-600 hover:bg-white text-xl cursor-pointer p-2 mt-4 w-full lg:w-60 mb-12 md:mb-0' : 'hidden'}>Delivered</button>
                             </div>
                         </div>
                     </div>
@@ -79,14 +86,16 @@ const Inventory = () => {
                     <hr className='w-2/3 mx-auto' />
                     <form onSubmit={(e) => handleRestock(e, item._id)} className='flex flex-col mt-8 px-3'>
                         <label className='text-lg mb-1 text-gray-300' htmlFor="quantity">Quantity of Item to Restock</label>
-                        <input className='text-xl rounded p-2' type="number" name='quantity' id='quantity' placeholder='Enter a number of quantity' required/>
-                        <input className='mt-4 p-2 rounded bg-green-600 text-white hover:text-green-600 hover:bg-white text-xl cursor-pointer' type="submit" value="Restock" />
+                        <input className='text-xl rounded p-2' type="number" name='quantity' id='quantity' placeholder='Enter a number of quantity' required />
+                        <input
+                            disabled={user?.email !== item?.email}
+                            className='mt-4 p-2 rounded bg-green-600 text-white hover:text-green-600 hover:bg-white text-xl cursor-pointer' type="submit" value="Restock" />
                     </form>
                 </div>
             </div>
             <div className='flex justify-between mt-12'>
-                <p className='flex gap-2 items-center text-white hover:text-green-300 text-xl underline'><BiLeftArrowAlt className='text-2xl'/><Link to='/home'>Back to Home</Link></p>
-                <p ><Link to='/manageInventories' className='text-white hover:text-green-300 text-xl underline'>Manage Inventories</Link></p>
+                <p className='flex gap-2 items-center text-white hover:text-green-300 text-xl underline'><BiLeftArrowAlt className='text-2xl' /><Link to='/home'>Back to Home</Link></p>
+                <p ><Link to='/all-items' className='text-white hover:text-green-300 text-xl underline'>See All Items</Link></p>
             </div>
         </div>
     );

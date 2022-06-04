@@ -58,9 +58,6 @@ const MyItems = () => {
                                 Quantity
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Supplier
-                            </th>
-                            <th scope="col" className="px-6 py-3">
                                 <span className="sr-only">Edit</span>
                             </th>
                         </tr>
@@ -76,9 +73,6 @@ const MyItems = () => {
                                 </td>
                                 <td className="px-6 py-4">
                                     {item.quantity}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {item.supplier}
                                 </td>
                                 <td className="px-6 py-4 text-right">
                                     <button onClick={() => handleDeleteMyItem(item._id)} className="font-medium text-red-400 hover:text-red-500 text-xl"><FiTrash /></button>

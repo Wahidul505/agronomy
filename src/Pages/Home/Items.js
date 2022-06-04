@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ItemDetails from '../ItemDetails/ItemDetails';
+import ItemDetails from './ItemDetails';
 
 const Items = () => {
     const [items, setItems] = useState([]);
@@ -20,7 +20,7 @@ const Items = () => {
                 />)
             }
         </div>
-        <p className='text-right mt-12'><Link to='/manageInventories' className='text-white hover:text-green-300 text-xl underline'>Manage Inventories</Link></p>
+        <p className='text-right mt-12'><Link to='/all-items' className='text-white hover:text-green-300 text-xl underline'>See All Items</Link></p>
         </div>
     );
 };

@@ -9,7 +9,6 @@ const AddInventory = () => {
     const descriptionRef = useRef('');
     const priceRef = useRef('');
     const quantityRef = useRef('');
-    const supplierRef = useRef('');
     const [user] = useAuthState(auth);
     const email = user.email;
     const handleAddItem = e => {
@@ -20,7 +19,6 @@ const AddInventory = () => {
             description: descriptionRef.current.value,
             price: parseFloat(priceRef.current.value),
             quantity: parseInt(Math.round(quantityRef.current.value)),
-            supplier: supplierRef.current.value,
             email: email
         }
         fetch('https://agronomy-warehouse.herokuapp.com/item', {
@@ -51,7 +49,6 @@ const AddInventory = () => {
                 <input ref={descriptionRef} className='px-1 bg-transparent border-b-2 border-amber-400 text-xl text-white focus:outline-none' type="text" name='description' id='description' placeholder='Short description of Product' required autoComplete='off' />
                 <input ref={priceRef} className='px-1 bg-transparent border-b-2 border-amber-400 text-xl text-white focus:outline-none' type="number" name='price' id='price' placeholder='Product Price' required autoComplete='off' />
                 <input ref={quantityRef} className='px-1 bg-transparent border-b-2 border-amber-400 text-xl text-white focus:outline-none' type="number" name='quantity' id='quantity' placeholder='How much to Add (quantity)' required autoComplete='off' />
-                <input ref={supplierRef} className='px-1 bg-transparent border-b-2 border-amber-400 text-xl text-white focus:outline-none' type="text" name='supplier' id='supplier' placeholder='Supplier' required autoComplete='off' />
                 <input className='font-semibold mt-4 p-2 rounded bg-amber-500 bg-opacity-90 text-white hover:text-orange-500 hover:bg-white text-xl cursor-pointer' type="submit" value="Add" />
             </form>
         </div>

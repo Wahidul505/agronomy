@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import RoundedCard from '../RoundedCard/RoundedCard';
+import RoundedCard from './RoundedCard';
 
 const SortedItems = () => {
     const [sortedItems, setSortedItems] = useState([]);

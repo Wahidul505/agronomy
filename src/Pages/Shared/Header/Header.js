@@ -34,7 +34,7 @@ const Header = () => {
             setHeader('Manage Inventories');
             setShow(false);
         }
-        else if (pathname === '/addInventory') {
+        else if (pathname === '/add-item') {
             setHeader('Add Item');
             setShow(false);
         }
@@ -50,15 +50,19 @@ const Header = () => {
             setHeader('Products Survey');
             setShow(false);
         }
+        else if (pathname === '/all-items') {
+            setHeader('All Items');
+            setShow(false);
+        }
         else {
             setHeader('');
         }
     }, [pathname]);
     return (
-        <div className='nav-bar mb-24'>
-            <div className='flex flex-col md:flex-row justify-between p-4 md:px-10 gap-2 text-white'>
+        <div className='nav-bar mb-24 h-fit'>
+            <div className='flex flex-col md:flex-row justify-between p-4 md:px-10 text-white h-fit'>
                 <img onClick={() => navigate('/')} className='-mt-10 md:-mt-12 -ml-4 w-24 md:w-32 h-24 md:h-32 cursor-pointer' src="https://i.ibb.co/W59qgww/agronomy-01-2-1.png" alt="" />
-                <nav className={`flex gap-1 md:gap-6 text-xl md:flex md:flex-row ${show ? 'flex-col' : 'hidden'}`}>
+                <nav className={`flex gap-1 md:gap-6 lg:text-lg md:flex md:flex-row lg:items-center items-start h-fit ${show ? 'flex-col' : 'hidden'}`}>
                     <NavLink to='/home'>Home</NavLink>
                     <NavLink to='/blogs'>Blogs</NavLink>
                     <NavLink to='/survey'>Survey</NavLink>
@@ -70,8 +74,9 @@ const Header = () => {
                             </>
                             :
                             <>
-                                <NavLink to='/addInventory'>Add</NavLink>
+                                <NavLink to='/add-item'>Add Item</NavLink>
                                 <NavLink to='/myItems'>My Items</NavLink>
+                                <span className='bg-gray-700 h-fit p-1 rounded-lg overflow-hidden'>{user?.displayName}</span>
                                 <span><button onClick={() => signOut(auth)} className='underline'>Logout</button></span>
                             </>
                     }

@@ -43,12 +43,13 @@ const Register = () => {
     };
     useEffect(() => {
         if (registerError) {
-            toast.error('Something Went Wrong', { id: 'registerError' })
+            toast.error('Something Went Wrong', { id: 'registerError' });
         }
         else if (token) {
             toast.success('Account Created', { id: 'registerSuccess' });
             toast.success('Verification Sent', { id: 'sendVerificationSuccess' });
             navigate(from, { replace: true });
+            window.reload();
         }
     }, [registerError, from, navigate, token]);
     if (loading || updating) {

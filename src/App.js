@@ -18,7 +18,7 @@ import AllItems from './Pages/AllItems/AllItems';
 
 function App() {
   return (
-    <div className='bg-black bg-opacity-90 h-full'>
+    <div className='bg-black bg-opacity-90 h-full max-w-screen-2xl mx-auto'>
       <Toaster
         position="top-center"
         reverseOrder={false}
@@ -37,7 +37,7 @@ function App() {
           <Route path='/inventory/:id' element={<RequiredAuth>
             <Inventory />
           </RequiredAuth>}></Route>
-          <Route path='/addInventory' element={<RequiredAuth>
+          <Route path='/add-item' element={<RequiredAuth>
             <AddInventory />
           </RequiredAuth>}></Route>
           <Route path='/myItems' element={<RequiredAuth>

@@ -8,9 +8,7 @@ const ItemCount = () => {
             .then(data => setCount(data.count));
     }, []);
     return (
-        <div className='text-center text-gray-300 py-12 bg-black lg:-mx-8 mt-20' data-aos="fade-up"
-            data-aos-easing="linear"
-            data-aos-duration="2000">
+        <div className='text-center text-gray-300 py-12 bg-black -mx-8'>
             <h1 className='text-8xl mb-2'>{count}</h1>
             <p className='text-xl'>Total Different Products</p>
         </div>

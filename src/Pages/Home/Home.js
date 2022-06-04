@@ -7,7 +7,7 @@ import Survey from '../Survey/Survey';
 
 const Home = () => {
     return (
-        <div>
+        <div className='flex flex-col gap-32'>
             <Banner />
             <Items/>
             <ItemCount/>

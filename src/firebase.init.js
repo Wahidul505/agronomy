@@ -3,12 +3,12 @@ import { getAuth } from 'firebase/auth';
 
 // web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_apiKey,
-    authDomain: process.env.REACT_APP_authDomain,
-    projectId: process.env.REACT_APP_projectId,
-    storageBucket: process.env.REACT_APP_storageBucket,
-    messagingSenderId: process.env.REACT_APP_messagingSenderId,
-    appId: process.env.REACT_APP_appId,
+    apiKey: "AIzaSyBX2c1Cob6eFMu9xFduW9cB8sgm--XS0N0",
+    authDomain: "agronomy-abb73.firebaseapp.com",
+    projectId: "agronomy-abb73",
+    storageBucket: "agronomy-abb73.appspot.com",
+    messagingSenderId: "282003879639",
+    appId: "1:282003879639:web:ba2d0dc3040c299cafe292"
 };
 
 // Initialize Firebase

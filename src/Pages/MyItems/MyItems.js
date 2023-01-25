@@ -12,7 +12,7 @@ const MyItems = () => {
     const token = localStorage.getItem('token');
     useEffect(() => {
         if (email) {
-            fetch(`https://agronomy-warehouse.herokuapp.com/myItem?email=${email}&token=${token}`)
+            fetch(`https://agronomy.onrender.com/myItem?email=${email}&token=${token}`)
                 .then(res => res.json())
                 .then(data => {
                     if (!data.success) {
@@ -31,7 +31,7 @@ const MyItems = () => {
         if (!proceed) {
             return;
         }
-        fetch(`https://agronomy-warehouse.herokuapp.com/item/${id}`, {
+        fetch(`https://agronomy.onrender.com/item/${id}`, {
             method: 'DELETE'
         }).then(res => res.json()).then(data => {
             const remaining = items.filter(item => item._id !== id);

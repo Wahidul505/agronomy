@@ -5,7 +5,7 @@ import CountUp from 'react-countup';
 const SortedItems = () => {
     const [sortedItems, setSortedItems] = useState([]);
     useEffect(() => {
-        fetch('https://agronomy-warehouse.herokuapp.com/sortedItemByQuantity')
+        fetch('https://agronomy.onrender.com/sortedItemByQuantity')
             .then(res => res.json())
             .then(data => setSortedItems(data));
     }, [])

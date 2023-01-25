@@ -11,7 +11,7 @@ const Inventory = () => {
     const [item, setItem] = useState({});
     const [quantity, setQuantity] = useState(0);
     useEffect(() => {
-        fetch(`https://agronomy-warehouse.herokuapp.com/item/${id}`)
+        fetch(`https://agronomy.onrender.com/item/${id}`)
             .then(res => res.json())
             .then(data => {
                 setItem(data);
@@ -23,7 +23,7 @@ const Inventory = () => {
     }, [item])
 
     const handleDelivered = id => {
-        fetch(`https://agronomy-warehouse.herokuapp.com/item/${id}`, {
+        fetch(`https://agronomy.onrender.com/item/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -45,7 +45,7 @@ const Inventory = () => {
             return;
         }
         const totalQuantity = parseInt(quantity) + parseInt(e.target.quantity.value);
-        fetch(`https://agronomy-warehouse.herokuapp.com/item/${id}`, {
+        fetch(`https://agronomy.onrender.com/item/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

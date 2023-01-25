@@ -31,7 +31,7 @@ const AddInventory = () => {
                     quantity: parseInt(Math.round(quantityRef.current.value)),
                     email: email
                 };
-                fetch('https://agronomy-warehouse.herokuapp.com/item', {
+                fetch('https://agronomy.onrender.com/item', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

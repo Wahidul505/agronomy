@@ -5,7 +5,7 @@ import ItemDetails from './ItemDetails';
 const Items = () => {
     const [items, setItems] = useState([]);
     useEffect(() => {
-        fetch('https://agronomy-warehouse.herokuapp.com/item')
+        fetch('https://agronomy.onrender.com/item')
             .then(res => res.json())
             .then(data => setItems(data));
     }, [])

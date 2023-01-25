@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const ItemCount = () => {
     const [count, setCount] = useState(0)
     useEffect(() => {
-        fetch('https://agronomy-warehouse.herokuapp.com/itemCount')
+        fetch('https://agronomy.onrender.com/itemCount')
             .then(res => res.json())
             .then(data => setCount(data.count));
     }, []);

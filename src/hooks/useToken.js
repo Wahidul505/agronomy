@@ -4,7 +4,7 @@ const useToken = (user) => {
     const [token, setToken] = useState('');
     const email = user?.user?.email;
     if (email) {
-        fetch('https://agronomy-warehouse.herokuapp.com/access', {
+        fetch('https://agronomy.onrender.com/access', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

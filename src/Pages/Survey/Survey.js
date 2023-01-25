@@ -4,13 +4,13 @@ const Survey = () => {
     const [expensiveProduct, setExpensiveProduct] = useState({});
     const [highestProduct, setHighestProduct] = useState({});
     useEffect(() => {
-        fetch('https://agronomy-warehouse.herokuapp.com/sortedItemByQuantity')
+        fetch('https://agronomy.onrender.com/sortedItemByQuantity')
             .then(res => res.json())
             .then(data => setHighestProduct(data[0]));
     }, []);
 
     useEffect(() => {
-        fetch('https://agronomy-warehouse.herokuapp.com/highestPriceItem')
+        fetch('https://agronomy.onrender.com/highestPriceItem')
             .then(res => res.json())
             .then(data => setExpensiveProduct(data[0]));
     }, []);

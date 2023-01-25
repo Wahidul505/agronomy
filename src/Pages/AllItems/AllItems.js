@@ -4,7 +4,7 @@ import ItemDetails from '../Home/ItemDetails';
 const AllItems = () => {
     const [items, setItems] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/all-items')
+        fetch('https://agronomy.onrender.com/all-items')
             .then(res => res.json())
             .then(data => setItems(data));
     }, [])
